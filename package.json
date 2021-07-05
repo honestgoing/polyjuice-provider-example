@@ -5,6 +5,7 @@
   "dependencies": {
     "@polyjuice-provider/core": "^0.0.1-rc2",
     "@polyjuice-provider/ethers": "^0.0.1-rc3",
+    "@polyjuice-provider/web3": "^0.0.1-rc3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",

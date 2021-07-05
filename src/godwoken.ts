@@ -3,6 +3,7 @@
 // import { PolyjuiceConfig } from "@polyjuice-provider/core/lib/hardhat/wallet-signer";
 // import PolyjuiceHttpProvider from "@polyjuice-provider/core";
 import { PolyjuiceConfig, PolyjuiceWallet, PolyjuiceJsonRpcProvider } from "@polyjuice-provider/ethers";
+import { PolyjuiceHttpProvider } from "@polyjuice-provider/web3";
 
 
 export const polyjuiceConfig: PolyjuiceConfig = {
@@ -30,5 +31,5 @@ export const polyjuiceJsonRpcProvider = new PolyjuiceJsonRpcProvider(
 
 export const polyjuiceWallet = new PolyjuiceWallet(privateKey, polyjuiceConfig, polyjuiceJsonRpcProvider);
 
-
+export const polyjuiceWeb3HttpProvider = new PolyjuiceHttpProvider(polyjuiceConfig.web3RpcUrl, polyjuiceConfig.godwokerOption, []);
 

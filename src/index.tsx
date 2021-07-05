@@ -3,11 +3,35 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { polyjuiceWallet } from "./godwoken"
+import { polyjuiceWallet, polyjuiceWeb3HttpProvider } from "./godwoken"
 
 polyjuiceWallet.godwoker
   .getScriptHashByAccountId(0x0)
   .then((result) => console.log(result));
+
+const data = polyjuiceWallet.godwoker.encodeArgs({
+  from: '',
+  to: '',
+  gas: '',
+  gasPrice: '',
+  data: '',
+  value: '',
+});
+console.log('ethers ecode data:', data);
+
+polyjuiceWeb3HttpProvider.godwoker
+  .getScriptHashByAccountId(0x0)
+  .then((result) => console.log(result));
+
+const data2 = polyjuiceWeb3HttpProvider.godwoker.encodeArgs({
+  from: '',
+  to: '',
+  gas: '',
+  gasPrice: '',
+  data: '',
+  value: '',
+});
+console.log('web3 ecode data:', data2);
 
 ReactDOM.render(
   <React.StrictMode>
