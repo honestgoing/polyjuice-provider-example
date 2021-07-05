@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { polyjuiceHttpProvider } from "./godwoken"
+import { polyjuiceWallet } from "./godwoken"
 
-polyjuiceHttpProvider.godwoker
+polyjuiceWallet.godwoker
   .getScriptHashByAccountId(0x0)
   .then((result) => console.log(result));
 
