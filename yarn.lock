@@ -1393,7 +1393,7 @@
   dependencies:
     "@ethersproject/logger" "^5.4.0"
 
-"@ethersproject/networks@^5.4.0":
+"@ethersproject/networks@5.4.1", "@ethersproject/networks@^5.4.0":
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/@ethersproject/networks/-/networks-5.4.1.tgz#2ce83b8e42aa85216e5d277a7952d97b6ce8d852"
   integrity sha512-8SvowCKz9Uf4xC5DTKI8+il8lWqOr78kmiqAVLYT9lzB8aSmJHQMD1GSuJI0CW4hMAnzocpGpZLgiMdzsNSPig==
@@ -1419,6 +1419,31 @@
   version "5.4.0"
   resolved "https://registry.yarnpkg.com/@ethersproject/providers/-/providers-5.4.0.tgz#1b9eeaf394d790a662ec66373d7219c82f4433f2"
   integrity sha512-XRmI9syLnkNdLA8ikEeg0duxmwSWTTt9S+xabnTOyI51JPJyhQ0QUNT+wvmod218ebb7rLupHDPQ7UVe2/+Tjg==
+  dependencies:
+    "@ethersproject/abstract-provider" "^5.4.0"
+    "@ethersproject/abstract-signer" "^5.4.0"
+    "@ethersproject/address" "^5.4.0"
+    "@ethersproject/basex" "^5.4.0"
+    "@ethersproject/bignumber" "^5.4.0"
+    "@ethersproject/bytes" "^5.4.0"
+    "@ethersproject/constants" "^5.4.0"
+    "@ethersproject/hash" "^5.4.0"
+    "@ethersproject/logger" "^5.4.0"
+    "@ethersproject/networks" "^5.4.0"
+    "@ethersproject/properties" "^5.4.0"
+    "@ethersproject/random" "^5.4.0"
+    "@ethersproject/rlp" "^5.4.0"
+    "@ethersproject/sha2" "^5.4.0"
+    "@ethersproject/strings" "^5.4.0"
+    "@ethersproject/transactions" "^5.4.0"
+    "@ethersproject/web" "^5.4.0"
+    bech32 "1.1.4"
+    ws "7.4.6"
+
+"@ethersproject/providers@5.4.1":
+  version "5.4.1"
+  resolved "https://registry.nlark.com/@ethersproject/providers/download/@ethersproject/providers-5.4.1.tgz?cache=0&sync_timestamp=1625275235077&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40ethersproject%2Fproviders%2Fdownload%2F%40ethersproject%2Fproviders-5.4.1.tgz#654267b563b833046b9c9647647cfc8267cb93b4"
+  integrity sha1-ZUJntWO4MwRrnJZHZHz8gmfLk7Q=
   dependencies:
     "@ethersproject/abstract-provider" "^5.4.0"
     "@ethersproject/abstract-signer" "^5.4.0"
@@ -1824,6 +1849,21 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
+"@polyjuice-provider/base@0.0.1-rc3":
+  version "0.0.1-rc3"
+  resolved "https://registry.nlark.com/@polyjuice-provider/base/download/@polyjuice-provider/base-0.0.1-rc3.tgz?cache=0&sync_timestamp=1625499359365&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40polyjuice-provider%2Fbase%2Fdownload%2F%40polyjuice-provider%2Fbase-0.0.1-rc3.tgz#011d924b037d55ee96329ed7597a4ca3122bf006"
+  integrity sha1-AR2SSwN9Ve6WMp7XWXpMoxIr8AY=
+  dependencies:
+    "@ckb-lumos/base" "^0.16.0"
+    "@polyjuice-provider/godwoken" "^0.0.1-rc1"
+    buffer "^6.0.3"
+    encoding "^0.1.13"
+    eth-sig-util "^3.0.1"
+    jayson "^3.4.4"
+    keccak256 "^1.0.2"
+    web3 "^1.3.4"
+    xhr2-cookies "^1.1.0"
+
 "@polyjuice-provider/core@^0.0.1-rc2":
   version "0.0.1-rc2"
   resolved "https://registry.yarnpkg.com/@polyjuice-provider/core/-/core-0.0.1-rc2.tgz#743c8d8ae5c431327925cfe26d57a84edb104322"
@@ -1838,6 +1878,26 @@
     keccak256 "^1.0.2"
     web3 "^1.3.4"
     xhr2-cookies "^1.1.0"
+
+"@polyjuice-provider/ethers@^0.0.1-rc3":
+  version "0.0.1-rc3"
+  resolved "https://registry.nlark.com/@polyjuice-provider/ethers/download/@polyjuice-provider/ethers-0.0.1-rc3.tgz?cache=0&sync_timestamp=1625499473003&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40polyjuice-provider%2Fethers%2Fdownload%2F%40polyjuice-provider%2Fethers-0.0.1-rc3.tgz#89b209793b6ec963b07166afca09183bb8108bf3"
+  integrity sha1-ibIJeTtuyWOwcWavygkYO7gQi/M=
+  dependencies:
+    "@polyjuice-provider/base" "0.0.1-rc3"
+    buffer "^6.0.3"
+    encoding "^0.1.13"
+    ethers "^5.4.0"
+
+"@polyjuice-provider/godwoken@^0.0.1-rc1":
+  version "0.0.1-rc1"
+  resolved "https://registry.nlark.com/@polyjuice-provider/godwoken/download/@polyjuice-provider/godwoken-0.0.1-rc1.tgz#3316a710cf824f635629fa147804bc94ffd41008"
+  integrity sha1-MxanEM+CT2NWKfoUeAS8lP/UEAg=
+  dependencies:
+    "@ckb-lumos/base" "^0.16.0"
+    ckb-js-toolkit "^0.9.3"
+    immutable "^4.0.0-rc.12"
+    keccak256 "^1.0.2"
 
 "@rollup/plugin-node-resolve@^7.1.1":
   version "7.1.3"
@@ -3862,6 +3922,14 @@ ckb-js-toolkit@^0.10.2:
     cross-fetch "^3.0.6"
     jsbi "^3.1.2"
 
+ckb-js-toolkit@^0.9.3:
+  version "0.9.3"
+  resolved "https://registry.nlark.com/ckb-js-toolkit/download/ckb-js-toolkit-0.9.3.tgz#a0e71a3b8098915ba677b7f7215435878a5f1d98"
+  integrity sha1-oOcaO4CYkVumd7f3IVQ1h4pfHZg=
+  dependencies:
+    cross-fetch "^3.0.6"
+    jsbi "^3.1.2"
+
 class-is@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/class-is/-/class-is-1.1.0.tgz#9d3c0fba0440d211d843cec3dedfa48055005825"
@@ -5539,6 +5607,42 @@ ethers@5.4.0:
     "@ethersproject/pbkdf2" "5.4.0"
     "@ethersproject/properties" "5.4.0"
     "@ethersproject/providers" "5.4.0"
+    "@ethersproject/random" "5.4.0"
+    "@ethersproject/rlp" "5.4.0"
+    "@ethersproject/sha2" "5.4.0"
+    "@ethersproject/signing-key" "5.4.0"
+    "@ethersproject/solidity" "5.4.0"
+    "@ethersproject/strings" "5.4.0"
+    "@ethersproject/transactions" "5.4.0"
+    "@ethersproject/units" "5.4.0"
+    "@ethersproject/wallet" "5.4.0"
+    "@ethersproject/web" "5.4.0"
+    "@ethersproject/wordlists" "5.4.0"
+
+ethers@^5.4.0:
+  version "5.4.1"
+  resolved "https://registry.nlark.com/ethers/download/ethers-5.4.1.tgz?cache=0&sync_timestamp=1625275225659&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fethers%2Fdownload%2Fethers-5.4.1.tgz#bcff1e9f45bf1a061bf313ec04e8d9881d2d53f9"
+  integrity sha1-vP8en0W/GgYb8xPsBOjZiB0tU/k=
+  dependencies:
+    "@ethersproject/abi" "5.4.0"
+    "@ethersproject/abstract-provider" "5.4.0"
+    "@ethersproject/abstract-signer" "5.4.0"
+    "@ethersproject/address" "5.4.0"
+    "@ethersproject/base64" "5.4.0"
+    "@ethersproject/basex" "5.4.0"
+    "@ethersproject/bignumber" "5.4.0"
+    "@ethersproject/bytes" "5.4.0"
+    "@ethersproject/constants" "5.4.0"
+    "@ethersproject/contracts" "5.4.0"
+    "@ethersproject/hash" "5.4.0"
+    "@ethersproject/hdnode" "5.4.0"
+    "@ethersproject/json-wallets" "5.4.0"
+    "@ethersproject/keccak256" "5.4.0"
+    "@ethersproject/logger" "5.4.0"
+    "@ethersproject/networks" "5.4.1"
+    "@ethersproject/pbkdf2" "5.4.0"
+    "@ethersproject/properties" "5.4.0"
+    "@ethersproject/providers" "5.4.1"
     "@ethersproject/random" "5.4.0"
     "@ethersproject/rlp" "5.4.0"
     "@ethersproject/sha2" "5.4.0"
