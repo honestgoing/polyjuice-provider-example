@@ -1,11 +1,9 @@
-// import { PolyjuiceConfig } from "@retric/test-provider/lib/hardhat/wallet-signer";
-// import PolyjuiceHttpProvider from "@retric/test-provider";
-// import { PolyjuiceConfig } from "@polyjuice-provider/core/lib/hardhat/wallet-signer";
-// import PolyjuiceHttpProvider from "@polyjuice-provider/core";
 import { PolyjuiceConfig, PolyjuiceWallet, PolyjuiceJsonRpcProvider } from "@polyjuice-provider/ethers";
-import Web3 from 'web3';
 import { PolyjuiceHttpProvider } from "@polyjuice-provider/web3";
 import { ContractFactory } from "ethers";
+import Web3 from 'web3';
+
+export const privateKey = "0x1473ec0e7c507de1d5c734a997848a78ee4d30846986d6b1d22002a57ece74ba";
 
 export const polyjuiceConfig: PolyjuiceConfig = {
   godwokerOption: {
@@ -22,15 +20,14 @@ export const polyjuiceConfig: PolyjuiceConfig = {
   web3RpcUrl: "https://godwoken-testnet-web3-rpc.ckbapp.dev"
 };
 
-export const privateKey = "0x1473ec0e7c507de1d5c734a997848a78ee4d30846986d6b1d22002a57ece74ba";
-
 export const polyjuiceJsonRpcProvider = new PolyjuiceJsonRpcProvider(
   polyjuiceConfig.godwokerOption,
   [], // your abi items array
   polyjuiceConfig.web3RpcUrl
 );
 export const polyjuiceWallet = new PolyjuiceWallet(privateKey, polyjuiceConfig, polyjuiceJsonRpcProvider);
-new ContractFactory(
+
+export const contract = new ContractFactory(
   [],
   '',
   polyjuiceWallet,
