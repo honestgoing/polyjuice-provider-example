@@ -75,11 +75,11 @@ function App() {
       <header>
         <a
           className="App-link"
-          href="https://reactjs.org"
+          href="https://github.com/jjyr/godwoken-testnet"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Godwoken-Polyjuice L2
+          Godwoken Testnet
         </a>
         <p>Account 0x0 Script Hash: {scriptHash}</p>
         <p>encodeArgs for empty eth tx: {encodeArgs}</p>
