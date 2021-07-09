@@ -3,8 +3,9 @@
 // import { PolyjuiceConfig } from "@polyjuice-provider/core/lib/hardhat/wallet-signer";
 // import PolyjuiceHttpProvider from "@polyjuice-provider/core";
 import { PolyjuiceConfig, PolyjuiceWallet, PolyjuiceJsonRpcProvider } from "@polyjuice-provider/ethers";
+import Web3 from 'web3';
 import { PolyjuiceHttpProvider } from "@polyjuice-provider/web3";
-
+import { ContractFactory } from "ethers";
 
 export const polyjuiceConfig: PolyjuiceConfig = {
   godwokerOption: {
@@ -28,8 +29,14 @@ export const polyjuiceJsonRpcProvider = new PolyjuiceJsonRpcProvider(
   [], // your abi items array
   polyjuiceConfig.web3RpcUrl
 );
-
 export const polyjuiceWallet = new PolyjuiceWallet(privateKey, polyjuiceConfig, polyjuiceJsonRpcProvider);
+new ContractFactory(
+  [],
+  '',
+  polyjuiceWallet,
+);
 
 export const polyjuiceWeb3HttpProvider = new PolyjuiceHttpProvider(polyjuiceConfig.web3RpcUrl, polyjuiceConfig.godwokerOption, []);
+export const polyjuiceWeb3 = new Web3(polyjuiceWeb3HttpProvider);
+
 
