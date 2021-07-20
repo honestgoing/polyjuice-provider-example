@@ -4,8 +4,8 @@ import {
   PolyjuiceJsonRpcProvider,
 } from "@polyjuice-provider/ethers";
 import { PolyjuiceHttpProvider } from "@polyjuice-provider/web3";
-import { providers, ContractFactory, Signer } from "ethers";
-import { Script, utils } from "@ckb-lumos/base";
+import { providers, Signer } from "ethers";
+import { AbiItems } from "@polyjuice-provider/base";
 import Web3 from "web3";
 
 // !do not use dotenv in production,
@@ -84,6 +84,7 @@ export const polyjuiceConfig: PolyjuiceConfig = {
   rollupTypeHash: process.env.REACT_APP_ROLLUP_TYPE_HASH!,
   ethAccountLockCodeHash: process.env.REACT_APP_ETH_ACCOUNT_LOCK_CODE_HASH!,
   web3Url: process.env.REACT_APP_WEB3_JSON_RPC,
+  abiItems: SIMPLE_STORAGE_V2_ABI as AbiItems 
 };
 
 // web3.js
