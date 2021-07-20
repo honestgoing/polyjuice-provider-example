@@ -1,6 +1,7 @@
 import { ContractFactory, ethers } from "ethers";
 import React, { useEffect, useState } from "react";
 import "./App.css";
+import { AbiItems } from "@polyjuice-provider/base";
 import {
   polyjuiceWallet,
   polyjuiceWeb3HttpProvider,
@@ -20,7 +21,10 @@ require("dotenv").config();
 function App() {
   const [scriptHash, setScriptHash] = useState<string>();
   const [encodeArgs, setEncodeArgs] = useState<string>();
-  const [deployedContractAddress, setDeployedContractAddress] = useState<string>();
+  const [deployedContractAddress, setDeployedContractAddress] =
+    useState<string>();
+
+  const ETH_ADDRESS = process.env.REACT_APP_ETH_ADDRESS;
 
   useEffect(() => {
     init();
@@ -71,7 +75,7 @@ function App() {
 
   const deployContractWithEtherContractFactory = async () => {
     const signer = await createEthersSignerWithMetamask();
-    
+
     const contractDeployer = new ContractFactory(
       SIMPLE_STORAGE_V2_ABI,
       SIMPLE_STORAGE_V2_BYTECODE,
@@ -84,19 +88,22 @@ function App() {
     };
     const contract = await contractDeployer.deploy(overrides);
     await contract.deployed();
-    // ! please do not use `contract.address` as contractAddress here. 
-    // due to an known issue, it is wrong eth address in polyjuice. 
-    const txReceipt: any = await polyjuiceJsonRpcProvider.godwoker.eth_getTransactionReceipt(contract.deployTransaction.hash);
+    // ! please do not use `contract.address` as contractAddress here.
+    // due to an known issue, it is wrong eth address in polyjuice.
+    const txReceipt: any =
+      await polyjuiceJsonRpcProvider.godwoker.eth_getTransactionReceipt(
+        contract.deployTransaction.hash
+      );
     console.log(`txReceipt: ${JSON.stringify(txReceipt, null, 2)}`);
     setDeployedContractAddress(txReceipt.contractAddress);
-  }
+  };
 
   const sendTxUsingWeb3WithMetamaskSigning = async () => {
     const tx = {
-      from: "0xFb2C72d3ffe10Ef7c9960272859a23D24db9e04A",
-      to: deployedContractAddress,
+      from: ETH_ADDRESS,
+      to: deployedContractAddress || process.env.REACT_APP_EXAMPLE_CONTRACT_ADDRESS,
       value: "0x00",
-      data: "0x00",
+      data: "0x00", // todo: replace valid data
       gas: "0x3da0ad",
       gasPrice: "0x00",
     };
@@ -107,10 +114,10 @@ function App() {
 
   const sendTxUsingEthersWithMetamaskSigning = async () => {
     const tx = {
-      from: "0xFb2C72d3ffe10Ef7c9960272859a23D24db9e04A",
-      to: deployedContractAddress,
+      from: ETH_ADDRESS,
+      to: deployedContractAddress || process.env.REACT_APP_EXAMPLE_CONTRACT_ADDRESS,
       value: "0x00",
-      data: "0x00",
+      data: "0x00", // todo: replace valid data
       gas: "0x3da0ad",
       gasPrice: "0x00",
     };
@@ -122,10 +129,24 @@ function App() {
     console.log("transactionHash is " + transactionHash);
   };
 
+  const sendTxUsingWeb3ContractWithMetamaskSigning = async () => {
+    const simpleStorageV2Contract = new polyjuiceWeb3.eth.Contract(
+      SIMPLE_STORAGE_V2_ABI as AbiItems,
+      deployedContractAddress || process.env.REACT_APP_EXAMPLE_CONTRACT_ADDRESS
+    );
+    const txReceipt = await simpleStorageV2Contract.methods.set(ETH_ADDRESS).send({
+      from: ETH_ADDRESS,
+      gas: 0x54d30,
+      gasPrice: 0x0,
+    });
+    console.log('txReceipt =>', txReceipt);
+    alert(JSON.stringify(txReceipt, null, 2));
+  };
+
   const sendTxUsingEthersContractWithMetamaskSigning = async () => {
     const signer = await createEthersSignerWithMetamask();
     const simpleStorageV2Contract = new ethers.Contract(
-      deployedContractAddress!,
+      (deployedContractAddress || process.env.REACT_APP_EXAMPLE_CONTRACT_ADDRESS)!,
       SIMPLE_STORAGE_V2_ABI,
       signer
     );
@@ -146,30 +167,23 @@ function App() {
       <header>
         <a
           className="App-link"
-          href="https://github.com/jjyr/godwoken-testnet"
+          href="https://github.com/nervosnetwork/polyjuice-provider"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Godwoken Polyjuice E2E Tester 
+          Godwoken Polyjuice E2E Tester
         </a>
         <p>Account 0x0 Script Hash: {scriptHash}</p>
         <p>encodeArgs for empty eth tx: {encodeArgs}</p>
         <p>
           <button onClick={deployContractWithEtherContractFactory}>
-          deployContractWithEtherContractFactory
+            deployContractWithEtherContractFactory
           </button>
         </p>
+        <p>deployed contract address: {deployedContractAddress || "not yet"}</p>
         <p>
-          deployed contract address: {deployedContractAddress}
-        </p>
-        <p>
-          <button onClick={sendTxUsingWeb3WithMetamaskSigning}>
-            sendTxWithMetamaskSigning
-          </button>
-        </p>
-        <p>
-          <button onClick={sendTxUsingEthersWithMetamaskSigning}>
-            sendTxUsingEthersWithMetamaskSigning
+          <button onClick={sendTxUsingWeb3ContractWithMetamaskSigning}>
+            sendTxUsingWeb3ContractWithMetamaskSigning
           </button>
         </p>
         <p>
