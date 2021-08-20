@@ -83,8 +83,6 @@ export const httpRpcUrl = process.env.REACT_APP_WEB3_JSON_RPC!;
 export const wsRpcUrl = process.env.REACT_APP_WEB3_WS_JSON_RPC!;
 
 export const polyjuiceConfig: PolyjuiceConfig = {
-//  rollupTypeHash: process.env.REACT_APP_ROLLUP_TYPE_HASH!,
-//  ethAccountLockCodeHash: process.env.REACT_APP_ETH_ACCOUNT_LOCK_CODE_HASH!,
   web3Url: httpRpcUrl,
   abiItems: SIMPLE_STORAGE_V2_ABI as AbiItems 
 };
